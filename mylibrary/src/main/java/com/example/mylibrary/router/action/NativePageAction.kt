@@ -1,7 +1,10 @@
 package com.example.mylibrary.router.action
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.example.hyrouter.mapping.HyRouterManager
 import com.example.mylibrary.router.action.base.IAction
 import com.example.mylibrary.router.action.bus.RxBus
 import com.example.mylibrary.router.action.bus.Subscribe
@@ -27,13 +30,35 @@ class NativePageAction : IAction {
     @Subscribe
     fun call(event: NativePageEvent){
         Log.d("HyRouter","NativePageEvent:aaaaaaaaaaaaaaaaaaaaa")
+        val entity = event.transferEntity
+        if(entity == null){
+            Log.d("HyRouter","NativePageEvent:transferEntity is null")
+            event.callBack.onResult("transferEntity is null")
+            return
+        }
+
         val intent = Intent()
-        val className = com.example.hyrouter.mapping.HyRouterManager.INSTANCE.allMapping.get(event.transferEntity.key)
+        val className = HyRouterManager.INSTANCE.allMapping.get(entity.key)
         if(className != null){
             intent.setClassName(event.context, className)
-            event.context.startActivity(intent)
+            intent.putExtra("jump_is_finish", entity.isFinish)
+            intent.putExtra("COMMON_PARAMS", entity.commonParams)
+            startActivity(event.context, intent)
         }
         event.callBack.onResult("this is result")
+    }
+
+    fun startActivity(context: Context, intent: Intent?): Boolean {
+        return if (intent == null) {
+            false
+        } else {
+            val isFinish = intent.getBooleanExtra("jump_is_finish", false)
+            context.startActivity(intent)
+            if (isFinish && context is Activity) {
+                context.finish()
+            }
+            true
+        }
     }
 
     override fun unInit() {

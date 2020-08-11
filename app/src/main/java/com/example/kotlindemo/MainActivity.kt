@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlindemo.activity.TestActivity
 import com.example.kotlindemo.jetpack.JetpackActivity
 import com.example.mylibrary.router.HyRouter
 import com.example.mylibrary.router.action.FlutterPageAction
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         val tvShow:TextView = findViewById(R.id.tv_show)
         val btnClick:Button = findViewById(R.id.btn_click)
         val jetPack: Button = findViewById(R.id.btn_jetpack)
+        val test: Button = findViewById(R.id.btn_test)
         val rxbus: Button = findViewById(R.id.btn_rxbus)
         etInput = findViewById(R.id.et_input)
 
@@ -38,7 +40,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(it.context, JetpackActivity::class.java)
             startActivity(intent)
         }
-
+        test.setOnClickListener{
+            val intent = Intent(it.context, TestActivity::class.java)
+            startActivity(intent)
+        }
         rxbus.setOnClickListener{
             val str = etInput?.text.toString()
             HyRouter.INSTANCE.transfer(it.context, Uri.parse(str), object : CallBack {

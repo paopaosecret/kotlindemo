@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".jetpack.JetpackActivity"/>
+        <activity android:name=".activity.TestActivity"/>
     </application>
 
 </manifest>

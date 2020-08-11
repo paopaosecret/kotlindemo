@@ -52,8 +52,34 @@ object TransferEntityParse {
             } else {
                 return null
             }
+            val isFinish = uri.getQueryParameter("isFinish")
+            if ("true" == isFinish) {
+                entity.isFinish = true
+            }
+            val isLogin = uri.getQueryParameter("isLogin")
+            val needLogin = uri.getQueryParameter("needLogin")
+            if ("true" == isLogin || "true" == needLogin) {
+                entity.isLogin = true
+            }
+            val abMark = uri.getQueryParameter("ABMark")
+            if(!TextUtils.isEmpty(abMark)){
+                entity.mark = abMark
+            }
             val params = uri.getQueryParameter("params")
             entity.params = params
+            val paremters = uri.queryParameterNames
+            val iterator: Iterator<*> = paremters.iterator()
+
+            while (iterator.hasNext()) {
+                val key = iterator.next() as String
+                if ("params" != key) {
+                    val value = uri.getQueryParameter(key)
+                    value?.let {
+                        entity.commonParams.put(key, it)
+                    }
+                }
+            }
+
             if (checkEntityLegal(entity)) {
                 entity
             } else null

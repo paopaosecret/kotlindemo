@@ -16,4 +16,8 @@ class TransferEntity : Serializable {
     var business: String? = null
     var key: String? = null
     var params: String? = null
+    var isFinish = false
+    var isLogin = false
+    var mark: String? = null
+    var commonParams: HashMap<String, String> = HashMap()
 }
