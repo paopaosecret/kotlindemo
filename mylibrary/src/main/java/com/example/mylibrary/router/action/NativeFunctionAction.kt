@@ -1,12 +1,11 @@
 package com.example.mylibrary.router.action
 
-import android.content.Intent
 import android.util.Log
 import com.example.mylibrary.router.action.base.IAction
 import com.example.mylibrary.router.action.bus.RxBus
 import com.example.mylibrary.router.action.bus.Subscribe
 import com.example.mylibrary.router.action.event.NativeFunctionEvent
-import com.example.mylibrary.router.core.HyRouterManager
+import com.example.hyrouter.mapping.HyRouterManager
 
 /**
  *
@@ -32,14 +31,18 @@ class NativeFunctionAction : IAction {
         val value = HyRouterManager.INSTANCE.allMapping.get(event.transferEntity.key)     //printf方法反射测试
         if(value != null){
             val array = value.split("#")
-            if(array.size == 2){
+            if(array.size >= 2){
                 val className = array[0]
                 val functionName = array[1]
-
                 val classImpl = Class.forName(className)
-                val obj = classImpl.newInstance()
-
-
+                if(classImpl.declaredMethods != null && classImpl.declaredMethods.size > 0){
+                    for(method in classImpl.declaredMethods){
+                        if(functionName.equals(method.name)){
+                            val obj = classImpl.newInstance()
+                            method.invoke(obj, event.context, event.callBack, event.transferEntity.params)
+                        }
+                    }
+                }
             }
         }
         event.callBack?.onResult("this is result")

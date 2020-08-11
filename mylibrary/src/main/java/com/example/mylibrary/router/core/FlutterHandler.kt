@@ -19,7 +19,7 @@ class FlutterHandler : IHandler {
     override fun hanlde(context: Context?, entity: TransferEntity, callBack: CallBack): Boolean {
         Log.d("HyRouter", "FlutterHandler hanlde")
         val key = entity.key;
-        if(key != null && HyRouterManager.INSTANCE.allMapping?.containsKey(key)){
+        if(key != null && com.example.hyrouter.mapping.HyRouterManager.INSTANCE.allMapping?.containsKey(key)){
             when (entity.type) {
                 HyRouterConstant.HYROUTER_NATIVE_TYPE_PAGE -> {
                     RxBus.post(FlutterPageEvent(context, entity, callBack))

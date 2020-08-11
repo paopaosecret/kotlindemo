@@ -9,7 +9,7 @@ import com.example.mylibrary.router.action.NativePageAction
 import com.example.mylibrary.router.action.WebPageAction
 import com.example.mylibrary.router.callback.CallBack
 import com.example.mylibrary.router.core.DispatchCenter
-import com.example.mylibrary.router.core.HyRouterManager
+import com.example.hyrouter.mapping.HyRouterManager
 import com.example.mylibrary.router.entity.TransferEntity
 import com.example.mylibrary.router.parser.TransferEntityParse
 

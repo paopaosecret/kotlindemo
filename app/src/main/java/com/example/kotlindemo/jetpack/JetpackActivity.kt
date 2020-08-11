@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hyrouter.annotation.RouterPage
 import com.example.kotlindemo.KotlinApplication
 import com.example.kotlindemo.R
 import com.example.kotlindemo.jetpack.adapter.WordAdapter
@@ -14,6 +15,7 @@ import com.example.kotlindemo.jetpack.viewmodel.WordViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
+@RouterPage(key = "jetpack")
 class JetpackActivity: AppCompatActivity() {
     private lateinit var  mWordViewModel: WordViewModel
     override fun onCreate(savedInstanceState: Bundle?) {

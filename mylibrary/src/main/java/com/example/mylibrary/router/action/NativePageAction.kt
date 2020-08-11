@@ -6,7 +6,6 @@ import com.example.mylibrary.router.action.base.IAction
 import com.example.mylibrary.router.action.bus.RxBus
 import com.example.mylibrary.router.action.bus.Subscribe
 import com.example.mylibrary.router.action.event.NativePageEvent
-import com.example.mylibrary.router.core.HyRouterManager
 
 /**
  *
@@ -29,7 +28,7 @@ class NativePageAction : IAction {
     fun call(event: NativePageEvent){
         Log.d("HyRouter","NativePageEvent:aaaaaaaaaaaaaaaaaaaaa")
         val intent = Intent()
-        val className = HyRouterManager.INSTANCE.allMapping.get(event.transferEntity.key)
+        val className = com.example.hyrouter.mapping.HyRouterManager.INSTANCE.allMapping.get(event.transferEntity.key)
         if(className != null){
             intent.setClassName(event.context, className)
             event.context.startActivity(intent)

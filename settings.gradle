@@ -1,3 +1,6 @@
+include ':hyrouter-mapping'
+include ':hyrouter-annotation'
+include ':hyrouter-compiler'
 include ':mylibrary'
 include ':app'
 rootProject.name = "kotlindemo"

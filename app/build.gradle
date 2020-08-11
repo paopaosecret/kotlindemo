@@ -27,6 +27,8 @@ android {
 
 dependencies {
     kapt "androidx.room:room-compiler:2.2.5"
+    kapt project(':hyrouter-compiler')
+    compileOnly project (':hyrouter-mapping')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -35,7 +37,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(':mylibrary')
-
+    implementation project (':hyrouter-annotation')
     implementation rootProject.ext.dependencies["appcompat-v7"]
     implementation rootProject.ext.dependencies["support-v4"]
     implementation rootProject.ext.dependencies["recyclerview-v7"]

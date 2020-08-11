@@ -42,15 +42,23 @@ fun testMethod2(){
         if(array.size >= 2){
             val className = array[0]
             val functionName = array[1]
-            val classImpl = Class.forName(className)
-            if(classImpl.declaredMethods != null && classImpl.declaredMethods.size > 0){
-                for(method in classImpl.declaredMethods){
-                    if(functionName.equals(method.name)){
-                        val obj = classImpl.newInstance()
-                        method.invoke(obj, "hello word")
+            if(array.size > 2){
+                val classImpl = Class.forName(className)
+                if(classImpl.declaredMethods != null && classImpl.declaredMethods.size > 0){
+                    for(method in classImpl.declaredMethods){
+                        if(functionName.equals(method.name)){
+                            val obj = classImpl.newInstance()
+                            method.invoke(obj, "hello word")
+                        }
                     }
                 }
+            }else{
+                val classImpl = Class.forName(className)
+                val obj = classImpl.newInstance()
+                val method = classImpl.getDeclaredMethod(functionName)
+                method.invoke(obj)
             }
+
         }
     }
 }
