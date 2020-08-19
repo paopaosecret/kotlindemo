@@ -4,9 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.view.View
+import android.widget.*
+import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlindemo.activity.TestActivity
 import com.example.kotlindemo.jetpack.JetpackActivity
@@ -14,7 +14,17 @@ import com.example.mylibrary.router.HyRouter
 import com.example.mylibrary.router.action.FlutterPageAction
 import com.example.mylibrary.router.callback.CallBack
 
+
 class MainActivity : AppCompatActivity() {
+
+    val m = arrayOf(
+        "merchant://native/page/shangjiatong/jetpack",
+        "merchant://native/page/shangjiatong/testpage?id=2",
+        "merchant://native/function/shangjiatong/test?id=2&params=zhangsan12",
+        "merchant://native/function/shangjiatong/test?id=2",
+        "merchant://native/function/shangjiatong/print?id=2"
+    )
+
     var TAG = "MainActivity"
     var etInput: EditText? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +36,16 @@ class MainActivity : AppCompatActivity() {
         val jetPack: Button = findViewById(R.id.btn_jetpack)
         val test: Button = findViewById(R.id.btn_test)
         val rxbus: Button = findViewById(R.id.btn_rxbus)
+        val spinner: Spinner = findViewById(R.id.spinner)
         etInput = findViewById(R.id.et_input)
 
+        //将可选内容与ArrayAdapter连接起来
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, m)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        //将adapter 添加到spinner中
+        spinner.adapter = adapter
+        //添加事件Spinner事件监听
+        spinner.onItemSelectedListener = SpinnerSelectedListener()
 
         btnClick.setOnClickListener {
             tvShow.setText("channge Text")
@@ -57,5 +75,14 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         FlutterPageAction.INSTANCE.unInit()
         super.onDestroy()
+    }
+
+    //使用数组形式操作
+    inner class SpinnerSelectedListener : OnItemSelectedListener {
+        override fun onItemSelected(arg0: AdapterView<*>?, arg1: View?, arg2: Int, arg3: Long) {
+            etInput?.setText(m.get(arg2))
+        }
+
+        override fun onNothingSelected(arg0: AdapterView<*>?) {}
     }
 }
