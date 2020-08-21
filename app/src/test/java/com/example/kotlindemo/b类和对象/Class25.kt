@@ -28,9 +28,13 @@ fun Class25.sayHello(age: Int){
 //TODO 给MutableList<Int> 添加一个 max属性
 val MutableList<Int>.maxVlaue: Int
     get() = 65536
+//var ageValue: Int = 0;
 
-val Class25.age: Int
+var Class25.age: Int
     get() = 20
+    set(value) {
+//        field = value           扩展属性没有幕后字段来存储属性值
+    }
 
 fun main(){
     //TODO 注意扩展是静态解析的，并不会给MutableList<Int>类中添加新的函数，只是在调用的时候，使用.表达式调用一个新函数
@@ -40,5 +44,7 @@ fun main(){
     println("\n${list.maxVlaue}")
 
     val class25 = Class25()
+    class25.sayHello(class25.age)
+    class25.age = 100;
     class25.sayHello(class25.age)
 }
