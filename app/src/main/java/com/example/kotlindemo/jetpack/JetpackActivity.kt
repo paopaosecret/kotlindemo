@@ -21,7 +21,6 @@ class JetpackActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jetpack)
-
         initView()
     }
 
@@ -42,6 +41,11 @@ class JetpackActivity: AppCompatActivity() {
             val num = Random().nextInt(100000)
             val word = Word( KotlinApplication.id++,"word$num", "description$num")
             mWordViewModel?.insert(word)
+        }
+
+        val deleteButton = findViewById<FloatingActionButton>(R.id.fab_delete_word);
+        deleteButton.setOnClickListener {
+            mWordViewModel?.deleteAll()
         }
     }
 }

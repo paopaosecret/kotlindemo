@@ -17,7 +17,11 @@ class WordRepository(private val wordDao: WordDao) {
 
     var mAllWords: LiveData<List<Word>> = wordDao.getWords() //数据可以从网络来，也可以从数据库缓存来
 
-    suspend fun insert(word: Word){
+    suspend fun insert(word: Word) {
         wordDao.insert(word)
+    }
+
+    suspend fun deleteAll() {
+        wordDao.deleteAll();
     }
 }

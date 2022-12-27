@@ -32,4 +32,7 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
         mRepository.insert(todo)
     }
 
+    fun deleteAll() = viewModelScope.launch{
+        mRepository.deleteAll();
+    }
 }
