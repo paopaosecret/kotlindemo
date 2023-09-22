@@ -11,8 +11,8 @@ package com.example.kotlindemo.a基础
 
 fun main(){
 //    testIf()
-    testWhen()
-//    testFor()
+//    testWhen()
+    testFor()
 //    testWhile()
 }
 

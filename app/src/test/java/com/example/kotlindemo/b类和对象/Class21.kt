@@ -16,7 +16,7 @@ package com.example.kotlindemo.b类和对象
  */
 
 //TODO 类定义语法：class 类名 constructor(f:Type) : supercClass {}
-// class 类名 如果主构造器没有任何注释和可见修饰符  “constructor”可省略
+// class 类名 如果主构造器没有任何参数和可见修饰符  “constructor”可省略
 class Class21 constructor(className: String){
     var className = ""
     var version = 0

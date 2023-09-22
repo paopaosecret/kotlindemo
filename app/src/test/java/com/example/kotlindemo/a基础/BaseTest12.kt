@@ -13,7 +13,7 @@ package com.example.kotlindemo.a基础
 
 //TODO 导入
 import org.junit.Test
-import com.example.kotlindemo.Test as DemoTest  //TODO 当有同个类名时， 可使用as 关键字对某个类做重命名
+import com.example.kotlindemo.Test as DemoTest  //TODO 当有同个类名时， 推荐使用as 关键字对某个类做重命名,  Java 权限定类名的方式也可用
 
 
 fun main(){

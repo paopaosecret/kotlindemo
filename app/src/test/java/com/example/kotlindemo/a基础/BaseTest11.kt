@@ -36,22 +36,25 @@ fun test1(){
     i3 = 30
 //    i1 = 40            //TODO val定义的变量只能赋值一次(只读)， var可以多次赋值（可变）
 
-    println(i1)
-    println(i2)
-    println(i3)
+    println("i1 = $i1")
+    println("i2 = $i2")
+    println("i3 = $i3")
 
     val c: Char = 'c'
 //    if(c == 1)             //TODO 字符不能当做数字使用
-    println(c)
+    println("字符c = $c")
 
-    val str: String = "abcsd${i1 + i3}"   //TODO Kotlin支持字符串模板“${表达式}”  或者 “$变量”
+    val str: String = "i1 + i3 = ${i1 + i3}"   //TODO Kotlin支持字符串模板“${表达式}”  或者 “$变量”
     println(str)
 
     //数组初始化
-    val array1: IntArray = IntArray(5)               //[0,0,0,0,0]
+    val array1 = IntArray(5)                         //[0,0,0,0,0]
     val array2 = IntArray(4){10}                     //[10,10,10,10]
     var array3 = IntArray(3){it * 1}                 //[0,1,2]
     array1.iterator().forEach { print("$it ") }
+    println()
     array2.iterator().forEach { print("$it ") }
+    println()
     array3.iterator().forEach { print("$it ") }
+    println()
 }
