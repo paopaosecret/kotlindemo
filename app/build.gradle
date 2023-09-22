@@ -23,10 +23,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    kapt {
+        javacOptions {
+            option("-Xuse-javac-compiler")
+            option("-Xmaxerrs", 500)
+            option("-Xmaxwarns", 500)
+            option("-Djava.library.path=/opt/homebrew/Cellar/sqlite/3.43.1")
+        }
+    }
 }
 
 dependencies {
-    kapt "androidx.room:room-compiler:2.2.5"
+    kapt "androidx.room:room-compiler:2.4.0-alpha03"
     kapt project(':hyrouter-compiler')
     compileOnly project (':hyrouter-mapping')
 
