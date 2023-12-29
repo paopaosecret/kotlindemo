@@ -14,4 +14,22 @@
         <item name="android:background">@android:color/holo_orange_light</item>
         <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
     </style>
+
+    <style name="ThemeBlack" parent="@android:style/Theme.Black">
+        <item name="colorAttrName">#FF00FF00</item>
+        <item name="integerAttrName">33</item>
+        <item name="booleanAttrName">true</item>
+        <item name="dimensionAttrName">76dp</item>
+        <item name="stringAttrName">"hello world"</item>
+        <item name="referenceAttrName">@drawable/livekit_console_music</item>
+    </style>
+
+    <style name="ThemeLight" parent="@android:style/Theme.Light">
+        <item name="colorAttrName">#FFFFFF00</item>
+        <item name="integerAttrName">33</item>
+        <item name="booleanAttrName">false</item>
+        <item name="dimensionAttrName">76dp</item>
+        <item name="stringAttrName">"你好 世界"</item>
+        <item name="referenceAttrName">@drawable/livekit_console_settings</item>
+    </style>
 </resources>

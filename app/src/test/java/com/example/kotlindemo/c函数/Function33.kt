@@ -38,7 +38,6 @@ class Function33{
         println(f3(str, fun1))
 //        val fs = fun1.invoke(str,str)
 //        println(str.length + fs.length)
-
     }
 }
 

@@ -7,6 +7,7 @@ class KotlinApplication : Application(){
 
     companion object {
         var id: Long  = 1
+        var lightTheme: Boolean = true
 
         val mInstance by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED){
             KotlinApplication()

@@ -10,7 +10,7 @@ package com.example.kotlindemo.b类和对象
  * @创建日期 2020/7/22 10:31
  */
 interface IInterfaceA{
-    var name: String       //TODO 注意：接口中的属性是抽象的
+    var name: String       //TODO 注意：接口中的属性是抽象的，该属性必须在子类的构造器中实现
     val nameImpl: String   //TODO 注意：带实现的属性必须是val修饰
         get() = "接口Name"
 
@@ -33,7 +33,7 @@ interface IInterfaceC{
 
 //TODO 定义抽象类
 abstract class Tools {
-    //TODO 这个函数式抽象的，他没有实现，必须被子类重写
+    //TODO 这个函数是抽象的，他没有实现，必须被子类重写
     abstract fun animate()
 
     //TODO 抽象类中的非抽象函数，并不是默认open的，但是可以标注为open
