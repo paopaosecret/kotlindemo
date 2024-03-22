@@ -29,8 +29,8 @@ class FileParser<T>(
         var len = 0;
         var fos: FileOutputStream? = null
         try {
-            inputStream = response.body()?.byteStream()
-            val total = response.body()?.contentLength()
+            inputStream = response.body?.byteStream()
+            val total = response.body?.contentLength()
             var sum: Long = 0;
             val dir = File(filePath)
             if(!dir.exists()){
@@ -51,7 +51,7 @@ class FileParser<T>(
             e.printStackTrace()
         } finally {
             try {
-                response.body()?.close()
+                response.body?.close()
                 inputStream?.close()
                 fos?.close()
             } catch (e: Exception){ }

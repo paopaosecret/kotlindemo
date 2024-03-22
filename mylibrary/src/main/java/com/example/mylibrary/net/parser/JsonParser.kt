@@ -17,7 +17,7 @@ class JsonParser<T>(val type: Type, private val className: String) : IParser {
 
     override fun isNeedParser(response: Response): Boolean {
         TODO("判断是否需要进行JSON解析")
-        if(CONTENT_TYPE != response.body()?.contentType().toString()){
+        if(CONTENT_TYPE != response.body?.contentType().toString()){
             return false
         }
 

@@ -10,6 +10,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlindemo.activity.TestActivity
 import com.example.kotlindemo.jetpack.JetpackActivity
+import com.example.kotlindemo.network.NetworkActivity
 import com.example.mylibrary.router.HyRouter
 import com.example.mylibrary.router.action.FlutterPageAction
 import com.example.mylibrary.router.callback.CallBack
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         val test: Button = findViewById(R.id.btn_test)
         val rxbus: Button = findViewById(R.id.btn_rxbus)
         val spinner: Spinner = findViewById(R.id.spinner)
+        val buttonNetwork: Button = findViewById(R.id.btn_network)
         etInput = findViewById(R.id.et_input)
 
         //将可选内容与ArrayAdapter连接起来
@@ -69,6 +71,11 @@ class MainActivity : AppCompatActivity() {
                     Log.d("HyRouter", result as String)
                 }
             })
+        }
+
+        buttonNetwork.setOnClickListener {
+            val intent = Intent(it.context, NetworkActivity::class.java)
+            startActivity(intent)
         }
     }
 

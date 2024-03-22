@@ -1,13 +1,14 @@
 package com.example.mylibrary.net.request
 
-import com.example.kotlindemo.反射.HttpUtils
-import com.example.kotlindemo.反射.callback.AbstractCallBack
+import com.example.kotlindemo.e反射.HttpUtils
+import com.example.kotlindemo.e反射.callback.AbstractCallBack
 import com.example.mylibrary.net.bean.CacheMode
 import com.example.mylibrary.net.cache.CacheManager
 import com.example.mylibrary.net.cookie.Cookie
 import com.example.mylibrary.net.bean.HttpHeaders
 import com.example.mylibrary.net.bean.HttpParams
 import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.Interceptor
 
 /**
@@ -37,7 +38,7 @@ abstract class BaseRequest<out T>{
 
     constructor(url: String){
         this.url = url
-        httpUrl = HttpUrl.parse(url)
+        httpUrl = url.toHttpUrlOrNull()
 
         var httpUtils: HttpUtils = HttpUtils.mInstance
         cacheManager = CacheManager.mInstance
